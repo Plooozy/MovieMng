@@ -10,7 +10,7 @@ public class MovieRepositoryManagerTest {
     Movie movie6 = new Movie(159, "The Lion King", "Cartoon", false);
 
     @Test
-    public void test() {
+    public void shouldFindAll() {
         MovieRepositoryManager repo = new MovieRepositoryManager();
         repo.addMovie(movie1);
         repo.addMovie(movie2);
