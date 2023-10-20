@@ -1,10 +1,10 @@
-public class PurchaseMovie {
+public class Movie {
     private int id;
     private String movieName;
     private String movieGenre;
     private boolean premiereTomorrow;
 
-    public PurchaseMovie(int id, String movieName, String movieGenre, boolean premiereTomorrow) {
+    public Movie(int id, String movieName, String movieGenre, boolean premiereTomorrow) {
         this.id = id;
         this.movieName = movieName;
         this.movieGenre = movieGenre;
