@@ -39,7 +39,7 @@ public class MovieRepositoryManagerTest {
 
     @Test
     public void shouldFindLastFour() {
-        MovieRepositoryManager repo = new MovieRepositoryManager();
+        MovieRepositoryManager repo = new MovieRepositoryManager(4);
         repo.addMovie(movie1);
         repo.addMovie(movie2);
         repo.addMovie(movie3);
@@ -47,29 +47,46 @@ public class MovieRepositoryManagerTest {
         repo.addMovie(movie5);
         repo.addMovie(movie6);
         Movie[] expected = {movie6, movie5, movie4, movie3};
-        Movie[] actual = repo.findLast(4);
+        Movie[] actual = repo.findLast();
         Assertions.assertArrayEquals(expected, actual);
     }
 
     @Test
-    public void shouldFindLastThree() {
-        MovieRepositoryManager repo = new MovieRepositoryManager();
+    public void shouldFindLastSix() {
+        MovieRepositoryManager repo = new MovieRepositoryManager(6);
         repo.addMovie(movie1);
         repo.addMovie(movie2);
         repo.addMovie(movie3);
-        Movie[] expected = {movie3, movie2, movie1};
+        repo.addMovie(movie4);
+        repo.addMovie(movie5);
+        repo.addMovie(movie6);
+        Movie[] expected = {movie6, movie5, movie4, movie3, movie2, movie1};
+        Movie[] actual = repo.findLast();
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldFindLastOne() {
+        MovieRepositoryManager repo = new MovieRepositoryManager(1);
+        repo.addMovie(movie1);
+        repo.addMovie(movie2);
+        repo.addMovie(movie3);
+        repo.addMovie(movie4);
+        repo.addMovie(movie5);
+        repo.addMovie(movie6);
+        Movie[] expected = {movie6};
         Movie[] actual = repo.findLast();
         Assertions.assertArrayEquals(expected, actual);
     }
 
     @Test
     public void shouldFindLastThreeParam4() {
-        MovieRepositoryManager repo = new MovieRepositoryManager();
+        MovieRepositoryManager repo = new MovieRepositoryManager(4);
         repo.addMovie(movie1);
         repo.addMovie(movie2);
         repo.addMovie(movie3);
         Movie[] expected = {movie3, movie2, movie1};
-        Movie[] actual = repo.findLast(4);
+        Movie[] actual = repo.findLast();
         Assertions.assertArrayEquals(expected, actual);
     }
 }

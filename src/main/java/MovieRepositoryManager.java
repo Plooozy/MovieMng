@@ -1,6 +1,14 @@
 public class MovieRepositoryManager {
+    private final int limit;
     private Movie[] movies = new Movie[0];
-    private int resultLength = 5;
+
+    public MovieRepositoryManager() { // без параметра
+        this.limit = 5;
+    }
+
+    public MovieRepositoryManager(int limit) { // с параметром
+        this.limit = limit;
+    }
 
     public void addMovie(Movie movie) {
         Movie[] tmp = new Movie[movies.length + 1];
@@ -13,27 +21,15 @@ public class MovieRepositoryManager {
         return movies;
     }
 
-    public Movie[] findLast() { // без параметра
-        if (movies.length > resultLength) {
-            this.resultLength = 5;
-        } else {
-            this.resultLength = movies.length;
-        }
-        Movie[] reversed = new Movie[resultLength];
-        for (int i = 0; i < resultLength; i++) {
-            reversed[i] = movies[movies.length - 1 - i];
-        }
-        return reversed;
-    }
-
-    public Movie[] findLast(int resultLength) { // с параметром
-        if (movies.length > resultLength) {
-            this.resultLength = resultLength;
-        } else {
+    public Movie[] findLast() {
+        int resultLength;
+        if (movies.length < limit) {
             resultLength = movies.length;
+        } else {
+            resultLength = limit;
         }
         Movie[] reversed = new Movie[resultLength];
-        for (int i = 0; i < resultLength; i++) {
+        for (int i = 0; i < reversed.length; i++) {
             reversed[i] = movies[movies.length - 1 - i];
         }
         return reversed;
